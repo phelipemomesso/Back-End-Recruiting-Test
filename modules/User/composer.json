@@ -1,0 +1,24 @@
+{
+    "name": "easyagenda/user",
+    "description": "",
+    "authors": [
+        {
+            "name": "Easyagenda",
+            "email": "cloud.easyagenda@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\User\\Providers\\UserServiceProvider"
+            ],
+            "aliases": {
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\User\\": ""
+        }
+    }
+}

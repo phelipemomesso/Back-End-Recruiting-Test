@@ -1,0 +1,1118 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Troco Digital API",
+        "description": "API documentation of application responsible for applying the intelligence and business rules of the Troco Digital project.",
+        "contact": {
+            "email": "contato@trocodigital.com.br"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "0.1.0"
+    },
+    "paths": {
+        "/product/category": {
+            "get": {
+                "tags": [
+                    "product/categories"
+                ],
+                "summary": "Display a listing of the catgories of products",
+                "operationId": "index",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/product_categories"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "product/categories"
+                ],
+                "summary": "Store a newly category in storage",
+                "operationId": "store",
+                "requestBody": {
+                    "description": "Data to create a category in storage",
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/product_categories"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/product_categories"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/product_categories"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/product/category/{id}": {
+            "get": {
+                "tags": [
+                    "product/categories"
+                ],
+                "summary": "Display the specified category",
+                "operationId": "show",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/product_category_required"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/product_categories"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "product/categories"
+                ],
+                "summary": "Update the specified category in storage",
+                "operationId": "update",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/product_category_required"
+                    }
+                ],
+                "requestBody": {
+                    "description": "Data to update category in storage",
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/product_categories"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/product_categories"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/product_categories"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "product/categories"
+                ],
+                "summary": "Remove the specified category from storage",
+                "operationId": "destroy",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/product_category_required"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/product/place/{place}/offers": {
+            "get": {
+                "tags": [
+                    "product/offers"
+                ],
+                "summary": "Display a listing of the offers",
+                "operationId": "index",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/product_place_offers_required"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/product_offers"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "product/offers"
+                ],
+                "summary": "Store a newly offer in storage",
+                "operationId": "store",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/product_place_offers_required"
+                    }
+                ],
+                "requestBody": {
+                    "description": "Data to create a offer in storage",
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/product_offers"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/product_offers"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/product_offers"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/product/place/{place}/offers/{offer}": {
+            "get": {
+                "tags": [
+                    "product/offers"
+                ],
+                "summary": "Display the specified offer",
+                "operationId": "show",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/product_place_offers_required"
+                    },
+                    {
+                        "$ref": "#/components/parameters/product_offers_required"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/product_offers"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "product/offers"
+                ],
+                "summary": "Update the specified offer in storage",
+                "operationId": "update",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/product_place_offers_required"
+                    },
+                    {
+                        "$ref": "#/components/parameters/product_offers_required"
+                    }
+                ],
+                "requestBody": {
+                    "description": "Data to update offer in storage",
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/product_offers"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/product_offers"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/product_offers"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "product/offers"
+                ],
+                "summary": "Remove the specified offer from storage",
+                "operationId": "destroy",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/product_place_offers_required"
+                    },
+                    {
+                        "$ref": "#/components/parameters/product_offers_required"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/product/place/{place}/products": {
+            "get": {
+                "tags": [
+                    "product/products"
+                ],
+                "summary": "Display a listing of the products",
+                "operationId": "index",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/product_place_required"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/product_products"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "product/products"
+                ],
+                "summary": "Store a newly product in storage",
+                "operationId": "store",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/product_place_required"
+                    }
+                ],
+                "requestBody": {
+                    "description": "Data to create a category in storage",
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/product_products"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/product_products"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/product_products"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        },
+        "/product/place/{place}/products/{product}": {
+            "get": {
+                "tags": [
+                    "product/products"
+                ],
+                "summary": "Display the specified product",
+                "operationId": "show",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/product_place_required"
+                    },
+                    {
+                        "$ref": "#/components/parameters/product_products_required"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/product_products"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "product/products"
+                ],
+                "summary": "Update the specified product in storage",
+                "operationId": "update",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/product_place_required"
+                    },
+                    {
+                        "$ref": "#/components/parameters/product_products_required"
+                    }
+                ],
+                "requestBody": {
+                    "description": "Data to update category in storage",
+                    "required": true,
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "$ref": "#/components/schemas/product_products"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/product_products"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/product_products"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "product/products"
+                ],
+                "summary": "Remove the specified product from storage",
+                "operationId": "destroy",
+                "parameters": [
+                    {
+                        "$ref": "#/components/parameters/product_place_required"
+                    },
+                    {
+                        "$ref": "#/components/parameters/product_products_required"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {}
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "passport": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "product_categories": {
+                "title": "Product category model",
+                "description": "Product category model",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "name"
+                        ],
+                        "properties": {
+                            "id": {
+                                "description": "ID of the product category",
+                                "type": "integer",
+                                "format": "int64",
+                                "readOnly": true
+                            },
+                            "name": {
+                                "description": "Name of the product category",
+                                "type": "string",
+                                "maxLength": 150
+                            },
+                            "is_active": {
+                                "description": "Status of the product category",
+                                "type": "boolean",
+                                "default": true
+                            },
+                            "created_at": {
+                                "description": "When the product category was created",
+                                "type": "string",
+                                "format": "date-time",
+                                "readOnly": true
+                            },
+                            "updated_at": {
+                                "description": "When the product category was last updated",
+                                "type": "string",
+                                "format": "date-time",
+                                "readOnly": true
+                            }
+                        },
+                        "type": "object"
+                    }
+                ]
+            },
+            "product_offers": {
+                "title": "Product Offer Model",
+                "description": "Product Offer Model",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "place_id",
+                            "product_id",
+                            "original_value",
+                            "discounted_value"
+                        ],
+                        "properties": {
+                            "id": {
+                                "description": "ID of the offer",
+                                "type": "integer",
+                                "format": "int64",
+                                "readOnly": true
+                            },
+                            "place_id": {
+                                "description": "Place of the offer",
+                                "type": "integer",
+                                "format": "int64",
+                                "readOnly": true
+                            },
+                            "product_id": {
+                                "description": "Product",
+                                "type": "integer",
+                                "format": "int64",
+                                "readOnly": true
+                            },
+                            "original_value": {
+                                "description": "Value of the product",
+                                "type": "number",
+                                "format": "float"
+                            },
+                            "discounted_value": {
+                                "description": "Value of the product with discount",
+                                "type": "number",
+                                "format": "float"
+                            },
+                            "is_active": {
+                                "description": "Status of the offer",
+                                "type": "boolean",
+                                "default": true
+                            },
+                            "created_at": {
+                                "description": "When the offer was created",
+                                "type": "string",
+                                "format": "date-time",
+                                "readOnly": true
+                            },
+                            "updated_at": {
+                                "description": "When the offer was last updated",
+                                "type": "string",
+                                "format": "date-time",
+                                "readOnly": true
+                            }
+                        },
+                        "type": "object"
+                    }
+                ]
+            },
+            "product_products": {
+                "title": "Product model",
+                "description": "Product model",
+                "type": "object",
+                "allOf": [
+                    {
+                        "required": [
+                            "place_id",
+                            "category_id",
+                            "name",
+                            "value"
+                        ],
+                        "properties": {
+                            "id": {
+                                "description": "ID of the product",
+                                "type": "integer",
+                                "format": "int64",
+                                "readOnly": true
+                            },
+                            "place_id": {
+                                "description": "Place of the product",
+                                "type": "integer",
+                                "format": "int64",
+                                "readOnly": true
+                            },
+                            "category_id": {
+                                "description": "Category of the product",
+                                "type": "integer",
+                                "format": "int64",
+                                "readOnly": true
+                            },
+                            "name": {
+                                "description": "Name of the product",
+                                "type": "string",
+                                "maxLength": 150
+                            },
+                            "value": {
+                                "description": "Value of the product",
+                                "type": "number",
+                                "format": "float"
+                            },
+                            "is_active": {
+                                "description": "Status of the product",
+                                "type": "boolean",
+                                "default": true
+                            },
+                            "created_at": {
+                                "description": "When the product was created",
+                                "type": "string",
+                                "format": "date-time",
+                                "readOnly": true
+                            },
+                            "updated_at": {
+                                "description": "When the product was last updated",
+                                "type": "string",
+                                "format": "date-time",
+                                "readOnly": true
+                            }
+                        },
+                        "type": "object"
+                    }
+                ]
+            }
+        },
+        "parameters": {
+            "base_search": {
+                "name": "search",
+                "in": "query",
+                "description": "Search parameter to filter results, you can optionally specify the columns to filter, for example: column1: value1; column2: value2",
+                "required": false,
+                "schema": {
+                    "type": "string"
+                }
+            },
+            "base_search_join": {
+                "name": "searchJoin",
+                "in": "query",
+                "description": "Join parameter to filter the search results",
+                "required": false,
+                "schema": {
+                    "type": "string",
+                    "enum": [
+                        "and",
+                        "or"
+                    ]
+                }
+            },
+            "base_sorted_by": {
+                "name": "sortedBy",
+                "in": "query",
+                "description": "Sort parameter to sort the results",
+                "required": false,
+                "schema": {
+                    "type": "string",
+                    "enum": [
+                        "asc",
+                        "desc"
+                    ]
+                }
+            },
+            "product_category_required": {
+                "name": "category",
+                "in": "path",
+                "description": "ID of the category",
+                "required": true,
+                "schema": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            },
+            "product_category_order_by": {
+                "name": "orderBy",
+                "in": "query",
+                "description": "Order the place results",
+                "required": false,
+                "schema": {
+                    "type": "string",
+                    "enum": [
+                        "id",
+                        "name"
+                    ]
+                }
+            },
+            "product_offers_required": {
+                "name": "product",
+                "in": "path",
+                "description": "ID of the offer",
+                "required": true,
+                "schema": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            },
+            "product_place_offers_required": {
+                "name": "place",
+                "in": "path",
+                "description": "ID of the place",
+                "required": true,
+                "schema": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            },
+            "product_products_required": {
+                "name": "product",
+                "in": "path",
+                "description": "ID of the product",
+                "required": true,
+                "schema": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            },
+            "product_place_required": {
+                "name": "place",
+                "in": "path",
+                "description": "ID of the place",
+                "required": true,
+                "schema": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "securitySchemes": {
+            "passport": {
+                "type": "oauth2",
+                "description": "Laravel passport oauth2 security.",
+                "in": "header",
+                "scheme": "https",
+                "flows": {
+                    "password": {
+                        "authorizationUrl": "http://localhost/oauth/authorize",
+                        "tokenUrl": "http://localhost/oauth/token",
+                        "refreshUrl": "http://localhost/token/refresh",
+                        "scopes": []
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "product/categories",
+            "description": "Operations about categories of products"
+        },
+        {
+            "name": "product/offers",
+            "description": "Operations about offers"
+        },
+        {
+            "name": "product/products",
+            "description": "Operations about products"
+        }
+    ],
+    "externalDocs": {
+        "description": "Find out more about Swagger",
+        "url": "http://swagger.io"
+    }
+}
